@@ -28,6 +28,9 @@ class Room(models.Model):
     # only when first create instance
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-updated', '-created']  # reverse order
+
     def __str__(self):
         return self.name
 
