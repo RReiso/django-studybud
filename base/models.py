@@ -46,5 +46,8 @@ class Message(models.Model):
     updated = models.DateTimeField(auto_now=True)  # everytime on save
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-updated', '-created']  # reverse order
+
     def __str__(self):
         return self.body[0:50]  # first 50 characters
