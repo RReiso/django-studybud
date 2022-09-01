@@ -22,7 +22,8 @@ class Room(models.Model):
 
     # value and form(that user can fill in) can be blank
     description = models.TextField(null=True, blank=True)
-    # participants =
+    participants = models.ManyToManyField(
+        User, related_name='participants', blank=True)
     updated = models.DateTimeField(auto_now=True)  # everytime on save
 
     # only when first create instance
