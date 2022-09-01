@@ -121,7 +121,9 @@ def create_room(request):
         form = RoomForm(request.POST)  # incoming data from form
 
         if form.is_valid():
-            form.save()  # saves data to db (room table)
+            room = form.save(commit=False) 
+            room.host = request.user
+            room.save()
             return redirect('home')
 
     context = {'form': form}
