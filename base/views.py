@@ -102,7 +102,18 @@ def room(request, pk):
     return render(request, 'base/room.html', context)
 
 
+def user_profile(request, pk):
+    user = User.objects.get(id=pk)
+    rooms = user.room_set.all()  # get children with the childmodelname_set
+    room_messages = user.message_set.all()
+    topics = Topic.objects.all
+    context = {'user': user, 'rooms': rooms,
+               'room_messages': room_messages, 'topics': topics}
+    return render(request, 'base/profile.html', context)
+
 # use this above the restricted view method, pass in the url to redirect the user
+
+
 @login_required(login_url='login')
 def create_room(request):
     form = RoomForm()
