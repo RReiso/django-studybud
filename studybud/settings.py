@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'base.apps.BaseConfig',  # connect base app to the django project
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
